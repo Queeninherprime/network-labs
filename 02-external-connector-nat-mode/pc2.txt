@@ -1,0 +1,107 @@
+ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:11:9a:ab brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.1/24 brd 10.0.2.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe11:9aab/64 scope link 
+       valid_lft forever preferred_lft forever
+PC2:~$ ping 10.0.1.254
+PING 10.0.1.254 (10.0.1.254): 56 data bytes
+ping: sendto: Network unreachable
+PC2:~$ ping 10.0.1.254
+PING 10.0.1.254 (10.0.1.254): 56 data bytes
+ping: sendto: Network unreachable
+PC2:~$ ping 10.0.2.1
+PING 10.0.2.1 (10.0.2.1): 56 data bytes
+64 bytes from 10.0.2.1: seq=0 ttl=42 time=0.032 ms
+64 bytes from 10.0.2.1: seq=1 ttl=42 time=0.034 ms
+64 bytes from 10.0.2.1: seq=2 ttl=42 time=0.035 ms
+64 bytes from 10.0.2.1: seq=3 ttl=42 time=0.033 ms
+^C
+--- 10.0.2.1 ping statistics ---
+PC2:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:11:9a:ab brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.1/24 brd 10.0.2.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe11:9aab/64 scope link 
+       valid_lft forever preferred_lft forever
+PC2:~$ ping 10.0.1.2
+PING 10.0.1.2 (10.0.1.2): 56 data bytes
+ping: sendto: Network unreachable
+PC2:~$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+10.0.2.0        *               255.255.255.0   U     0      0        0 eth0
+PC2:~$ ip add
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:11:9a:ab brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.1/24 brd 10.0.2.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe11:9aab/64 scope link 
+       valid_lft forever preferred_lft forever
+PC2:~$ ping
+BusyBox v1.33.1 () multi-call binary.
+
+Usage: ping [OPTIONS] HOST
+
+Send ICMP ECHO_REQUESTs to HOST
+
+        -4,-6           Force IP or IPv6 name resolution
+        -c CNT          Send only CNT pings
+        -s SIZE         Send SIZE data bytes in packets (default 56)
+        -i SECS         Interval
+        -A              Ping as soon as reply is recevied
+        -t TTL          Set TTL
+        -I IFACE/IP     Source interface or IP address
+        -W SEC          Seconds to wait for the first response (default 10)
+                        (after all -c CNT packets are sent)
+        -w SEC          Seconds until ping exits (default:infinite)
+PC2:~$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:11:9a:ab brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.1/24 brd 10.0.2.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe11:9aab/64 scope link 
+       valid_lft forever preferred_lft forever
+PC2:~$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+10.0.2.0        *               255.255.255.0   U     0      0        0 eth0
+PC2:~$ ip add
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 52:54:00:11:9a:ab brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.1/24 brd 10.0.2.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::5054:ff:fe11:9aab/64 scope link 
+       valid_lft forever preferred_lft fore
